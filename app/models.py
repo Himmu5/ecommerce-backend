@@ -1,5 +1,5 @@
 from pydantic import BaseModel, EmailStr
-
+from datetime import datetime
 class Product(BaseModel):
     id: int
     title: str
@@ -27,3 +27,5 @@ class User(BaseModel):
 class SIGNIN_RESPONSE(BaseModel):
     user: User
     token: str
+    
+    
