@@ -1,5 +1,6 @@
 from pydantic import BaseModel, EmailStr
-from datetime import datetime
+from typing import Dict
+
 class Product(BaseModel):
     id: int
     title: str
@@ -28,4 +29,7 @@ class SIGNIN_RESPONSE(BaseModel):
     user: User
     token: str
     
+class Cart_Type(BaseModel):
+    data: Dict[int, int]
+
     
