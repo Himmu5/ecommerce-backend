@@ -9,5 +9,5 @@ def create_access_token(data: dict):
     return encoded_jwt
 
 def verify_token(token: str):
+    token = token.replace("Bearer ", "")
     return jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
-

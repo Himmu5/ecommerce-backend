@@ -7,7 +7,6 @@ from fastapi.security import OAuth2PasswordBearer
 import pymongo.errors
 
 user_router = APIRouter()
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
 
 @user_router.post("/login", response_model=SIGNIN_RESPONSE)
 async def get_user(cred: SIGNIN_REQUEST):
@@ -18,14 +17,13 @@ async def get_user(cred: SIGNIN_REQUEST):
     else:
         user = await authenticate_user(cred.email, cred.password)
         if not user:
-            return JSONResponse(content={"error": "Invalid credentials"}, status_code=400)
+            return JSONResponse(content={"error": "Invalid credentials"}, status_code=404)
         else:
             data = {"email": cred.email,"password": cred.password}
-            token ="bearer "+create_access_token(data)
+            token ="Bearer "+create_access_token(data)
             user['id'] = str(user['_id'])
         return {"user": user, "token": token}
- 
- 
+
  
     
 async def create_user(email: str, password: str, fullName: str):

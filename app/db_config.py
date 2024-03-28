@@ -9,3 +9,6 @@ def get_product_collection():
 
 def get_user_collection():
     return database["users"];
+
+def get_cart_collection():
+    return database["cart"]
