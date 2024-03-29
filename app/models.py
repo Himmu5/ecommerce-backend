@@ -32,4 +32,7 @@ class SIGNIN_RESPONSE(BaseModel):
 class Cart_Type(BaseModel):
     data: Dict[int, int]
 
+class Cart_Response(BaseModel):
+    product: Product
+    quantity: int
     

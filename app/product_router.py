@@ -19,6 +19,20 @@ async def get_product(id:str) -> Any:
             raise HTTPException(status_code=404, detail="Product Id not given")
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+@product_router.get("/products/bulk",response_model=List[Product])
+async def getBulkProducts(ids: str = Query(...)):
+    try:
+        ids_list = ids.split(',')
+        products = []
+        for id in ids_list:
+            product = await get_product_collection().find_one({"id": int(id)})
+            if product:
+                products.append(product)
+        return products;
+    except:
+        print('An exception occurred')
+
     
 @product_router.get("/products", response_model=Dict[str, Any])
 async def get_products(
@@ -70,3 +84,5 @@ async def get_products(
         return {"meta": meta, "data": products}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
+
