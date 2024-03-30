@@ -14,4 +14,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8000
 
 # Running server
-CMD ["uvicorn" , "app.main:app"]
+CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0"]
