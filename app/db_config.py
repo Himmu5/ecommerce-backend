@@ -1,6 +1,6 @@
 from motor.motor_asyncio import AsyncIOMotorClient
 
-MONGO_URL = "mongodb://localhost:27017"
+MONGO_URL = "mongodb+srv://adityacha703:zHzsSj1iOs1JVsQJ@cluster0.g8euxgb.mongodb.net/"
 client = AsyncIOMotorClient(MONGO_URL)
 database = client["ecommerceDb"]
 
