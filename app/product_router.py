@@ -33,7 +33,7 @@ async def getBulkProducts(ids: str = Query(...)):
     except:
         print('An exception occurred')
 
-    
+
 @product_router.get("/products", response_model=Dict[str, Any])
 async def get_products(
     sortBy: Optional[str] = Query(None, description="Sort field (e.g., 'title', 'price')"),
