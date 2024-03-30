@@ -8,6 +8,7 @@ app = FastAPI()
 origins = [
     "http://localhost",
     "http://localhost:5173",
+    "https://ecommerce-site-himanshu.netlify.app"
 ]
 
 
